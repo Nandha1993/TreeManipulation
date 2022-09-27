@@ -67,21 +67,24 @@ public class BinaryTree<E> extends AbstractTree<E> implements Tree<E> {
                 treeNode.setLeft(new TreeNode(key));
                 break;
             }
-            else
-                q.add(treeNode.getLeft());
 
             if (treeNode.getRight() == null) {
                 treeNode.setRight(new TreeNode(key));
                 break;
             }
-            else
+
+            if(treeNode.getLeft() != null && treeNode.getRight() != null) {
+                q.add(treeNode.getLeft());
                 q.add(treeNode.getRight());
+            }
+
             logger.info("Inserting the TreeNode Binary Tree Completed.");
     } }
 
 
     /**
      * This method for level order traversal of Tree
+     * Collection<? extends E> c guarntees type should be E or sub class of E
      * @param c
      * @throws InputValidationException
      */
